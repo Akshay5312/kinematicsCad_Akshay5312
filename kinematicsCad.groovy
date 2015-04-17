@@ -17,3 +17,5 @@ for(DHLink dh:bot.getDhChain().getLinks()){
 	// add ax to list of objects to be returned
 	links.add(a);
 }
+
+return links;
