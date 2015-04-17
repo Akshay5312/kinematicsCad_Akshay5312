@@ -8,6 +8,8 @@ for(DHLink dh : model.getDhChain().getLinks() ){
 	System.out.println("Link D-H values = "+dh);
 	// Create an axis to represent the link
 	Axis a = new Axis(15);
+	//add a sphere to make it easier to distinguish
+	a.getChildren().add(new Sphere(5));
 	// create a position listener object
 	Affine s = new Affine();
 	//add listener to link
