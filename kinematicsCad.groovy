@@ -7,17 +7,15 @@ ArrayList<Object> links = new ArrayList<Object>();
 for(DHLink dh : model.getDhChain().getLinks() ){
 	System.out.println("Link D-H values = "+dh);
 	// Create an axis to represent the link
-	Axis a = new Axis(15);
-	//add a sphere to make it easier to distinguish
-	a.getChildren().add(new Sphere(5));
+	CSG cube = new Cube(20).toCSG();
 	// create a position listener object
 	Affine s = new Affine();
 	//add listener to link
 	dh.setListener(s);
 	//add listner to axis
-	a.getTransforms().add(s);
+	cube.setManipulator(s);
 	// add ax to list of objects to be returned
-	links.add(a);
+	links.add(cube);
 }
 
 return links;
