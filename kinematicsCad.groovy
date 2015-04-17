@@ -8,12 +8,8 @@ for(DHLink dh : model.getDhChain().getLinks() ){
 	System.out.println("Link D-H values = "+dh);
 	// Create an axis to represent the link
 	CSG cube = new Cube(20).toCSG();
-	// create a position listener object
-	Affine s = new Affine();
-	//add listener to link
-	dh.setListener(s);
 	//add listner to axis
-	cube.setManipulator(s);
+	cube.setManipulator(dh.getListener());
 	// add ax to list of objects to be returned
 	links.add(cube);
 }
