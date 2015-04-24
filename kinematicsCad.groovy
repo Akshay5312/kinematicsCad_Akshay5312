@@ -3,7 +3,7 @@ DHParameterKinematics model = new DHParameterKinematics(dyio,"TrobotMaster.xml")
 
 //Creating a list of objects, one for each link
 ArrayList<Object> links = new ArrayList<Object>();
-ArrayList<Affine> links = new ArrayList<Affine>();
+ArrayList<Affine> m = new ArrayList<Affine>();
 for(DHLink dh : model.getDhChain().getLinks() ){
 	System.out.println("Link D-H values = "+dh);
 	// Create an axis to represent the link
@@ -11,6 +11,7 @@ for(DHLink dh : model.getDhChain().getLinks() ){
 	Affine l = new Affine();
 	//add listner to axis
 	cube.setManipulator(l);
+  	m.add(l);
 	// add ax to list of objects to be returned
 	links.add(cube);
 }
@@ -19,9 +20,9 @@ model.addPoseUpdateListener(new ITaskSpaceUpdateListenerNR() {
 			@Override
 			public void onTaskSpaceUpdate(AbstractKinematicsNR source,	final TransformNR p) {
 				final ArrayList<TransformNR> jointLocations = model.getChainTransformations();
-				for (int i = 0; i < links.size(); i++) {
+				for (int i = 0; i < m.size(); i++) {
 					// setting the current location of each joint
-					TransformFactory.getTransform(jointLocations.get(i), links.get(i));
+					TransformFactory.getTransform(jointLocations.get(i), m.get(i));
 				}
 			}
 			@Override public void onTargetTaskSpaceUpdate(AbstractKinematicsNR source,TransformNR pose) {}
