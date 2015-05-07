@@ -3,6 +3,7 @@ DHParameterKinematics model = new DHParameterKinematics(dyio,"TrobotMaster.xml")
  
 //Creating a list of objects, one for each link
 ArrayList<Object> links = new ArrayList<Object>();
+model.setScriptingName("DHArm")
 links.add(model)
 for(DHLink dh : model.getDhChain().getLinks() ){
 	System.out.println("Link D-H values = "+dh);
