@@ -1,3 +1,5 @@
+import com.neuronrobotics.bowlerstudio.creature.CreatureLab;
+
 //Create the kinematics model from the xml file describing the D-H compliant parameters. 
 DHParameterKinematics model = new DHParameterKinematics(CreatureLab.class.getResourceAsStream("TrobotMaster.xml"));
  
