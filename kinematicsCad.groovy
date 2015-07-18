@@ -1,5 +1,5 @@
 //Create the kinematics model from the xml file describing the D-H compliant parameters. 
-DHParameterKinematics model = new DHParameterKinematics("TrobotMaster.xml");
+DHParameterKinematics model = new DHParameterKinematics(CreatureLab.class.getResourceAsStream("TrobotMaster.xml"));
  
 //Creating a list of objects, one for each link
 ArrayList<Object> links = new ArrayList<Object>();
