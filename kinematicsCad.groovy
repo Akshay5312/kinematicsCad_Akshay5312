@@ -7,7 +7,6 @@ MobileBase mb = new MobileBase(IOUtils.toInputStream(xmlContent, "UTF-8"));
 DHParameterKinematics model = mb.getAppendages().get(0); 
 //Creating a list of objects, one for each link
 ArrayList<Object> links = new ArrayList<Object>();
-model.setScriptingName("DHArm")
 links.add(mb);
 for(DHLink dh : model.getDhChain().getLinks() ){
 	System.out.println("Link D-H values = "+dh);
