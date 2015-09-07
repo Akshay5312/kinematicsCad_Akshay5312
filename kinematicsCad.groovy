@@ -1,8 +1,9 @@
 import com.neuronrobotics.bowlerstudio.creature.CreatureLab;
 
 //Create the kinematics model from the xml file describing the D-H compliant parameters. 
-DHParameterKinematics model = new DHParameterKinematics(CreatureLab.class.getResourceAsStream("TrobotMaster.xml"));
- 
+String xmlContent = ScriptingEngineWidget.codeFromGistID("2b0cff20ccee085c9c36","TrobotLinks.xml")[0];
+MobileBase mb = new MobileBase(IOUtils.toInputStream(xmlContent, "UTF-8"));
+DHParameterKinematics model = mb.getAppendages().get(0); 
 //Creating a list of objects, one for each link
 ArrayList<Object> links = new ArrayList<Object>();
 model.setScriptingName("DHArm")
