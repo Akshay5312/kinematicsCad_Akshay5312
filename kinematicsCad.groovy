@@ -8,7 +8,7 @@ DHParameterKinematics model = mb.getAppendages().get(0);
 //Creating a list of objects, one for each link
 ArrayList<Object> links = new ArrayList<Object>();
 model.setScriptingName("DHArm")
-model.add(mb);
+links.add(mb);
 for(DHLink dh : model.getDhChain().getLinks() ){
 	System.out.println("Link D-H values = "+dh);
 	// Create an axis to represent the link
