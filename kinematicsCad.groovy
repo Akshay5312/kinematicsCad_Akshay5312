@@ -1,4 +1,5 @@
 import com.neuronrobotics.bowlerstudio.creature.CreatureLab;
+import org.apache.commons.io.IOUtils;
 
 //Create the kinematics model from the xml file describing the D-H compliant parameters. 
 String xmlContent = ScriptingEngineWidget.codeFromGistID("2b0cff20ccee085c9c36","TrobotLinks.xml")[0];
