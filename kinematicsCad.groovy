@@ -14,7 +14,8 @@ if(dev==null){
 	mb.connect()
 	DeviceManager.addConnection(mb,mb.getScriptingName())
 	base=mb
-	ThreadUtil.wait(10000)// wait for the cad to generate itself
+	println "Waiting for cad to generate"
+	ThreadUtil.wait(50000)// wait for the cad to generate itself
 }else{
 	println "Robot found, runing code"
 	//the device is already present on the system, load the one that exists.
