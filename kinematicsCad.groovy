@@ -46,33 +46,34 @@ println "Waiting for legs to reset"
 ThreadUtil.wait(6000)// wait for the legs to fully reset themselves.
 println "Now to move one limb" 
 // Now we will move just one leg
-DHParameterKinematics leg0 = base.getAllDHChains().get(0)
+DHParameterKinematics leg0 = base.getAllDHChains().get(3)
+double zLift=15
 //Start from where the arm already is and move it from there with absolute location
 TransformNR current = leg0.getCurrentPoseTarget();
-current.translateZ(20);
+current.translateZ(zLift);
 leg0.setDesiredTaskSpaceTransform(current,  2.0);
 ThreadUtil.wait(2000)// wait for the legs to fully arrive
 println "Resetting limb"
 //and reset it
-current.translateZ(-20);
+current.translateZ(-zLift);
 leg0.setDesiredTaskSpaceTransform(current,  2.0);
 ThreadUtil.wait(2000)// wait for the legs to fully arrive
 
-current.translateX(20);
+current.translateX(zLift);
 leg0.setDesiredTaskSpaceTransform(current,  2.0);
 ThreadUtil.wait(2000)// wait for the legs to fully arrive
 println "Resetting limb"
 //and reset it
-current.translateX(-20);
+current.translateX(-zLift);
 leg0.setDesiredTaskSpaceTransform(current,  2.0);
 ThreadUtil.wait(2000)// wait for the legs to fully arrive
 
-current.translateY(-20);
+current.translateY(-zLift);
 leg0.setDesiredTaskSpaceTransform(current,  2.0);
 ThreadUtil.wait(2000)// wait for the legs to fully arrive
 println "Resetting limb"
 //and reset it
-current.translateY(20);
+current.translateY(zLift);
 leg0.setDesiredTaskSpaceTransform(current,  2.0);
 ThreadUtil.wait(2000)// wait for the legs to fully arrive
 
