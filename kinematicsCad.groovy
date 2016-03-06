@@ -34,6 +34,7 @@ ThreadUtil.wait(6000)// wait for the legs to fully reset themselves.
 println "Now to move one limb" 
 // Now we will move just one leg
 DHParameterKinematics leg0 = base.getAllDHChains().get(0)
+//Start from where the arm already is and move it from there with absolute location
 TransformNR current = leg0.getCurrentPoseTarget();
 current.translateZ(20);
 leg0.setDesiredTaskSpaceTransform(current,  2.0);
