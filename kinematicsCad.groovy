@@ -28,9 +28,26 @@ for(int i=0;i<10;i++){
 	base.DriveArc(move, toSeconds);
 	ThreadUtil.wait((int)toSeconds*1000)
 }
+println "Waiting for legs to reset"
+ThreadUtil.wait(6000)// wait for the legs to fully reset themselves.
+println "Now to move one limb" 
+// Now we will move just one leg
+DHParameterKinematics leg0 = base.getAllDHChains().get(0)
+TransformNR current = leg0.getCurrentPoseTarget();
+current.translateZ(20);
+leg0.setDesiredTaskSpaceTransform(current,  2.0);
+ThreadUtil.wait(2000)// wait for the legs to fully arrive
+println "Resetting limb"
+//and reset it
+current.translateZ(-20);
+leg0.setDesiredTaskSpaceTransform(current,  2.0);
+ThreadUtil.wait(2000)// wait for the legs to fully arrive
 
-ThreadUtil.wait(6000)// wait for the legs to fully reset themselves. 
+println "Now move just one link"
+leg0.setDesiredJointAxisValue(1,-25,2.0)// middle link
+ThreadUtil.wait(2000)// wait for the link to fully arrive
 
-
+leg0.setDesiredJointAxisValue(1,0,2.0)// middle link
+ThreadUtil.wait(2000)// wait for the link to fully arrive
 
 return null;
