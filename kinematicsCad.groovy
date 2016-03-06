@@ -58,15 +58,34 @@ current.translateZ(-20);
 leg0.setDesiredTaskSpaceTransform(current,  2.0);
 ThreadUtil.wait(2000)// wait for the legs to fully arrive
 
+current.translateX(20);
+leg0.setDesiredTaskSpaceTransform(current,  2.0);
+ThreadUtil.wait(2000)// wait for the legs to fully arrive
+println "Resetting limb"
+//and reset it
+current.translateX(-20);
+leg0.setDesiredTaskSpaceTransform(current,  2.0);
+ThreadUtil.wait(2000)// wait for the legs to fully arrive
+
+current.translateY(-20);
+leg0.setDesiredTaskSpaceTransform(current,  2.0);
+ThreadUtil.wait(2000)// wait for the legs to fully arrive
+println "Resetting limb"
+//and reset it
+current.translateY(20);
+leg0.setDesiredTaskSpaceTransform(current,  2.0);
+ThreadUtil.wait(2000)// wait for the legs to fully arrive
+
 println "Now move just one link"
-leg0.setDesiredJointAxisValue(0,// first link
-						-25, //target angle
-						2.0) // 2 seconds
-ThreadUtil.wait(2000)// wait for the link to fully arrive
-
-leg0.setDesiredJointAxisValue(0,// first link
-						0, //target angle
-						2.0) // 2 seconds
-ThreadUtil.wait(2000)// wait for the link to fully arrive
-
+for(int i=0;i<leg0.getNumberOfLinks();i++){
+	leg0.setDesiredJointAxisValue(i,// link index
+							25, //target angle
+							2.0) // 2 seconds
+	ThreadUtil.wait(2000)// wait for the link to fully arrive
+	
+	leg0.setDesiredJointAxisValue(i,// link index
+							0, //target angle
+							2.0) // 2 seconds
+	ThreadUtil.wait(2000)// wait for the link to fully arrive
+}
 return null;
