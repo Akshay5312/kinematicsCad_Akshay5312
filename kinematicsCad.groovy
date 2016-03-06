@@ -22,13 +22,20 @@ if(dev==null){
   	base=(MobileBase)dev
 }
 
-// walk forward 10 increments 
+// walk forward 10 increments of 10 mm totalling 100 mm translation
 TransformNR move = new TransformNR(10,0,0,new RotationNR())
 double toSeconds=0.1//100 ms for each increment
 for(int i=0;i<10;i++){
 	base.DriveArc(move, toSeconds);
 	ThreadUtil.wait((int)toSeconds*1000)
 }
+// turn 20 increments of 2 degrees totalling 40 degrees turn
+move = new TransformNR(0,0,0,new RotationNR( 0,0, 2))
+for(int i=0;i<20;i++){
+	base.DriveArc(move, toSeconds);
+	ThreadUtil.wait((int)toSeconds*1000)
+}
+
 println "Waiting for legs to reset"
 ThreadUtil.wait(6000)// wait for the legs to fully reset themselves.
 println "Now to move one limb" 
@@ -46,10 +53,10 @@ leg0.setDesiredTaskSpaceTransform(current,  2.0);
 ThreadUtil.wait(2000)// wait for the legs to fully arrive
 
 println "Now move just one link"
-leg0.setDesiredJointAxisValue(1,-25,2.0)// middle link
+leg0.setDesiredJointAxisValue(0,-25,2.0)// middle link
 ThreadUtil.wait(2000)// wait for the link to fully arrive
 
-leg0.setDesiredJointAxisValue(1,0,2.0)// middle link
+leg0.setDesiredJointAxisValue(0,0,2.0)// middle link
 ThreadUtil.wait(2000)// wait for the link to fully arrive
 
 return null;
