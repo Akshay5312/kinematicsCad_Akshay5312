@@ -1,5 +1,7 @@
 import com.neuronrobotics.bowlerstudio.creature.CreatureLab;
 import org.apache.commons.io.IOUtils;
+import  com.neuronrobotics.bowlerstudio.physics.*;
+import com.neuronrobotics.bowlerstudio.threed.*;
 
 MobileBase base;
 Object dev = DeviceManager.getSpecificDevice(MobileBase.class, "CarlTheWalkingRobot");
@@ -16,7 +18,11 @@ if(args==null){
 		DeviceManager.addConnection(mb,mb.getScriptingName())
 		base=mb
 		println "Waiting for cad to generate"
-		ThreadUtil.wait(50000)// wait for the cad to generate itself
+		ThreadUtil.wait(1000)
+		while(MobileBaseCadManager.get( base).getProcesIndictor().getProgress()<1){
+			println "Waiting for cad to get to 1:"+MobileBaseCadManager.get( base).getProcesIndictor().getProgress()
+			ThreadUtil.wait(1000)
+		}
 	}else{
 		println "Robot found, runing code"
 		//the device is already present on the system, load the one that exists.
