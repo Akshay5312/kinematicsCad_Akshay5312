@@ -1,4 +1,3 @@
-import com.neuronrobotics.bowlerstudio.creature.CreatureLab;
 import org.apache.commons.io.IOUtils;
 import  com.neuronrobotics.bowlerstudio.physics.*;
 import com.neuronrobotics.bowlerstudio.threed.*;
@@ -55,8 +54,8 @@ println "Waiting for legs to reset"
 ThreadUtil.wait(6000)// wait for the legs to fully reset themselves.
 println "Now to move one limb" 
 // Now we will move just one leg
-DHParameterKinematics leg0 = base.getAllDHChains().get(3)
-double zLift=5
+DHParameterKinematics leg0 = base.getAllDHChains().get(0)
+double zLift=25
 //Start from where the arm already is and move it from there with absolute location
 TransformNR current = leg0.getCurrentPoseTarget();
 current.translateZ(zLift);
