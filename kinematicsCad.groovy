@@ -41,7 +41,7 @@ for(int i=0;i<10;i++){
 }
 
 println "Waiting for legs to reset"
-ThreadUtil.wait(6000)// wait for the legs to fully reset themselves.
+ThreadUtil.wait(12000)// wait for the legs to fully reset themselves.
 println "Now to move one limb" 
 // Now we will move just one leg
 DHParameterKinematics leg0 = base.getAllDHChains().get(0)
